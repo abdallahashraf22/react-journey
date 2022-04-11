@@ -1,4 +1,3 @@
-import React from "react";
 import "./CounterActions.css";
 
 function CounterActions(props){
@@ -11,7 +10,5 @@ function CounterActions(props){
         </div>
     );
 }
-
-
 
 export default CounterActions;
