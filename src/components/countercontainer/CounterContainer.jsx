@@ -13,11 +13,13 @@ function CounterContainer(){
     }
 
     const subOne = ()=>{
-        setCounter(counter-1);
+        if(counter > 0){
+            setCounter(counter-1);
+        }
     }
 
     return(
-      <div className="container">
+      <div className="container text-center pinkcounter">
           <Counter counter={counter}/>
           <CounterActions addOne={addOne} subOne={subOne}/>
       </div>

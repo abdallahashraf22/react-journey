@@ -1,10 +1,14 @@
 
 
 .container{
-    background-color: pink;
     border-radius: 12px;
-    box-shadow: 5px 5px 10px #f87584, -5px -5px 10px #f87584;
     color: #06082a;
     padding:50px;
     margin-top: 50px;
+}
+
+
+.pinkcounter{
+    background-color: pink;
+    box-shadow: 5px 5px 10px #f87584, -5px -5px 10px #f87584;
 }
