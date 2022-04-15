@@ -1,0 +1,20 @@
+.todolist, .todoitem{
+    border: 2px solid white;
+    border-radius: 12px;
+    margin: auto;
+    width:60%;
+    padding: 20px;
+}
+
+.todoitem{
+    justify-content: center;
+}
+
+.todospans{
+    font-weight: bold;
+    text-shadow: 2px 2px #0b43fa;
+}
+
+.todoitem > div> button {
+    width: 70%;
+}
