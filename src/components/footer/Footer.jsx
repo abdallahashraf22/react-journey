@@ -9,7 +9,7 @@ const Footer = () => {
         // <h4 className="text-light">GitHub: <a href="https://github.com/abdallahashraf22"><i className="bi bi-github"></i></a></h4>
     //   </div>
     // </div>
-      <div className="container-fluid footer">
+      <div className="container-fluid footer fixed-bottom">
         <div className="row justify-content-center">
           <div className="col-6">
             <h1 className="text-start text-light">Find Me Online :</h1>

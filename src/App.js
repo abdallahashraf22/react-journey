@@ -9,8 +9,8 @@ import About from "./views/about/About";
 import Home from "./components/home/Home";
 import NotFound from "./views/notfound/NotFound";
 import TodoList from "./views/todo/Todo";
-import Footer from "./components/footer/Footer";
-
+// import Footer from "./components/footer/Footer";
+import Form from "./views/form/Form";
 
 function App() {
     return (
@@ -19,15 +19,16 @@ function App() {
                 <Navbar/>
                 <Routes>
                     <Route path="/" element={<Home/>}></Route>
-                    <Route path="/counter" element={<CounterContainer/>} />
-                    <Route path="/products" element={<Products/>} />
+                    <Route path="/counter" element={<CounterContainer/>}/>
+                    <Route path="/products" element={<Products/>}/>
                     <Route path="/products/:id" element={<ProductDetails/>}></Route>
                     <Route path="/about" element={<About/>}></Route>
                     <Route path="*" element={<NotFound/>}></Route>
                     <Route path="/todo" element={<TodoList/>}></Route>
+                    <Route path="/form" element={<Form/>}></Route>
                 </Routes>
             </BrowserRouter>
-            <Footer/>
+            {/*<Footer/>*/}
         </>
     );
 }

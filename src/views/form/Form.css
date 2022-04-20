@@ -1,0 +1,20 @@
+
+input {
+    border-radius: 10px !important;
+    box-shadow: 3px 3px 3px black;
+}
+
+button {
+    margin-top: 20px;
+}
+
+label {
+    font-size: 30px;
+    font-weight: 500;
+    text-shadow: 3px 3px 3px grey;
+    color: white;
+}
+
+input[type="radio"] {
+    margin: 20px 15px;
+}
