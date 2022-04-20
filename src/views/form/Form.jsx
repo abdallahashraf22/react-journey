@@ -2,23 +2,29 @@ import {Form, Button} from "react-bootstrap";
 import {useForm, Controller} from "react-hook-form";
 import Select from "react-select";
 import './Form.css'
+import * as yup from "yup";
+import {yupResolver} from "@hookform/resolvers/yup";
 
 function Login() {
-    const {
-        register,
-        handleSubmit,
-        formState: {errors},
-        control,
-    } = useForm({
+    const schema = yup.object({
+        FirstName: yup.string().required("First name required"),
+        LastName: yup.string().required("Last name required"),
+        Phone: yup.number().typeError("Must be a number").required("Phone required"),
+        Email: yup.string().email("Invalid email").required("Email required"),
+        Password: yup.string().required("Password required"),
+        Gender: yup.string().required("Gender required"),
+        Colors: yup.array().min(1, "Pick at least 1 color").of(yup.object().shape({
+            label: yup.string().required(),
+            value: yup.string().required()
+        }))
+    })
+
+    const {register, handleSubmit, formState: {errors}, control} = useForm({
         defaultValues: {
-            FirstName: "",
-            LastName: "",
-            Email: "",
-            Phone: "",
-            Password: "",
-            Gender: "",
-            Colors: [],
-        }
+            FirstName: "", LastName: "", Email: "", Phone: "", Password: "", Gender: "", Colors: [],
+
+        },
+        resolver: yupResolver(schema)
     });
 
     const onSubmit = (data) => {
@@ -39,19 +45,19 @@ function Login() {
                                 {...register("FirstName", {required: true})}
                             />
                             <Form.Text className="text-danger">
-                                {errors && errors.FirstName && <p>FirstName required </p>}
+                                <p>{errors.FirstName?.message}</p>
                             </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-1" controlId="lastName">
                             <Form.Label>Last Name</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Last Name"
+                                placeholder="Last name"
                                 name="LastName"
                                 {...register("LastName", {required: true})}
                             />
                             <Form.Text className="text-danger">
-                                {errors && errors.LastName && <p>LastName required </p>}
+                                <p>{errors.LastName?.message}</p>
                             </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-1" controlId="email">
@@ -63,7 +69,7 @@ function Login() {
                                 {...register("Email", {required: true})}
                             />
                             <Form.Text className="text-danger">
-                                {errors && errors.Email && <p>Email required </p>}
+                                <p>{errors.Email?.message}</p>
                             </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-1" controlId="Password">
@@ -75,7 +81,7 @@ function Login() {
                                 {...register("Password", {required: true})}
                             />
                             <Form.Text className="text-danger">
-                                {errors && errors.Password && <p>Password required </p>}
+                                <p>{errors.Password?.message}</p>
                             </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-1" controlId="Phone">
@@ -87,7 +93,7 @@ function Login() {
                                 {...register("Phone", {required: true})}
                             />
                             <Form.Text className="text-danger">
-                                {errors && errors.Phone && <p>Phone required </p>}
+                                <p> {errors.Phone?.message}</p>
                             </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-1">
@@ -109,7 +115,7 @@ function Login() {
                                 {...register("Gender")}
                             />
                             <Form.Text className="text-danger">
-                                {errors && errors.Gender && <p>Gender required </p>}
+                                <p> {errors.Gender?.message}</p>
                             </Form.Text>
                         </Form.Group>
 
@@ -132,7 +138,7 @@ function Login() {
 
                         />
                         <Form.Text className="text-danger">
-                            {errors && errors.Colors && <p>Color required </p>}
+                            <p> {errors.Colors?.message}</p>
                         </Form.Text>
                         <Button variant="primary" type="submit">
                             Submit
